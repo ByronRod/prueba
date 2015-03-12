@@ -91,3 +91,116 @@ void loop()
     digitalWrite(13, LOW);
   }
 }
+
+
+
+
+
+int motordelantero1 = 3;
+int motordelantero2 = 4;
+int motor2delantero1 = 5;
+int motor2delantero2 = 6;
+int motoratrasizq1= 7;
+int motoratrasizq2= 8;
+int motoratrasder1= 9;
+int motoratrasder2= 10;
+char instruccion;
+
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(motordelantero1,OUTPUT);
+  pinMode(motordelantero2,OUTPUT);
+  pinMode(motor2delantero1,OUTPUT);
+  pinMode(motor2delantero2,OUTPUT);
+  pinMode(motoratrasizq1,OUTPUT);
+  pinMode(motoratrasizq2,OUTPUT);
+  pinMode(motoratrasder1,OUTPUT);
+  pinMode(motoratrasder2,OUTPUT);
+  
+ 
+  Serial.begin(9600);
+  
+}
+
+void loop() {
+  if (Serial.available())
+  {  instruccion=Serial.read(); 
+  }
+  if(instruccion=='w')
+    {    adelante();}
+    
+   if(instruccion=='s')
+    {  atras();    } 
+    
+    if(instruccion=='a')
+    {izquierda();   }
+     if(instruccion=='d')
+    {     derecha();}
+    
+     if(instruccion=='x')
+    {     parar(); }
+ 
+  }
+
+
+void adelante (){
+  digitalWrite(motordelantero1,HIGH);
+  digitalWrite(motordelantero2,LOW);
+  digitalWrite(motor2delantero1,HIGH);
+  digitalWrite(motor2delantero2,LOW);
+  digitalWrite(motoratrasizq1,HIGH);
+  digitalWrite(motoratrasizq2,LOW);
+  digitalWrite(motoratrasder1,HIGH);
+  digitalWrite(motoratrasder2,LOW);
+
+
+}
+
+
+void atras (){
+  digitalWrite(motordelantero1,LOW);
+  digitalWrite(motordelantero2,HIGH);
+  digitalWrite(motor2delantero1,LOW);
+  digitalWrite(motor2delantero2,HIGH);
+  digitalWrite(motoratrasizq1,LOW);
+  digitalWrite(motoratrasizq2,HIGH);
+  digitalWrite(motoratrasder1,LOW);
+  digitalWrite(motoratrasder2,HIGH);
+}
+
+
+void izquierda(){
+  digitalWrite(motordelantero1,LOW);
+  digitalWrite(motordelantero2,HIGH);
+  digitalWrite(motor2delantero1,HIGH);
+  digitalWrite(motor2delantero2,LOW);
+  digitalWrite(motoratrasizq1,LOW);
+  digitalWrite(motoratrasizq2,HIGH);
+  digitalWrite(motoratrasder1,HIGH);
+  digitalWrite(motoratrasder2,LOW);
+}
+
+
+void derecha(){
+  digitalWrite(motordelantero1,HIGH);
+  digitalWrite(motordelantero2,LOW);
+  digitalWrite(motor2delantero1,LOW);
+  digitalWrite(motor2delantero2,HIGH);
+  digitalWrite(motoratrasizq1,HIGH);
+  digitalWrite(motoratrasizq2,LOW);
+  digitalWrite(motoratrasder1,LOW);
+  digitalWrite(motoratrasder2,HIGH);
+}
+
+
+void parar(){
+  digitalWrite(motordelantero1,LOW);
+  digitalWrite(motordelantero2,LOW);
+  digitalWrite(motor2delantero1,LOW);
+  digitalWrite(motor2delantero2,LOW);
+  digitalWrite(motoratrasizq1,LOW);
+  digitalWrite(motoratrasizq2,LOW);
+  digitalWrite(motoratrasder1,LOW);
+  digitalWrite(motoratrasder2,LOW);
+}
